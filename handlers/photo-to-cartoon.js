@@ -86,7 +86,7 @@ module.exports = (bot) => {
     wizardScene.use(async (ctx, next) => {
         const name = ctx.update.message?.text?.toLowerCase();
         if (cartoonVersionName.includes(name)) {
-            await ctx.replyMessage("🖼️ Sekarang kirim foto yang ingin diubah ke versi cartoon?", {reply_markup: {remove_keyboard: true}});
+            await ctx.replyMessage("🖼️ Sekarang kirim foto yang ingin diubah ke versi cartoon?", Markup.removeKeyboard());
             ctx.wizard.next();
         }
         return next();
