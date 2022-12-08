@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/newbied1/public_html/telegram-bot
+    - / $DEPLOYPATH
