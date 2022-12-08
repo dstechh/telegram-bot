@@ -22,10 +22,11 @@ const config = require("./config");
             ctx[key] = (message, options = {}) => ctx[customReply[key]](message, {...options, reply_to_message_id: messageId}).catch(e => ctx.telegram.sendMessage(
                 ctx.message.chat.id, //
                 message,
-                {
-                    ...options,
-                    reply_to_message_id: messageId
-                }
+                options
+                // {
+                //     ...options,
+                //     reply_to_message_id: messageId
+                // }
             ));
         });
 
