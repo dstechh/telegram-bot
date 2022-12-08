@@ -1,4 +1,4 @@
-const { Markup, Scenes, Input, Extra } = require("telegraf");
+const { Markup, Scenes, Input } = require("telegraf");
 const { createAxiosInstance } = require("../lib");
 
 const SCENE_NAME = "PHOTO_TO_CARTOON";

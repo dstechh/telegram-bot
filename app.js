@@ -39,7 +39,7 @@ const config = require("./config");
         require(path.resolve(`handlers/${file}`))(bot);
     }
 
-    if (config.isDevelopment) {
+    if (process.argv[2]?.trim() === "dev") {
         return bot.launch();
     }
 

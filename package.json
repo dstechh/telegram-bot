@@ -17,8 +17,8 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "start": "node app.js",
-    "watch": "./node_modules/.bin/nodemon app.js",
+    "start": "node app.js dev",
+    "watch": "./node_modules/.bin/nodemon app.js dev",
     "webhookset": "node webhook.js set",
     "webhookdelete": "node webhook.js delete"
   }
