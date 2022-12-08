@@ -4,6 +4,7 @@
     "axios-cookiejar-support": "^4.0.3",
     "cheerio": "^1.0.0-rc.12",
     "collect.js": "^4.34.3",
+    "dotenv": "^16.0.3",
     "form-data": "^4.0.0",
     "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",
@@ -17,8 +18,8 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "start": "node app.js dev",
-    "watch": "./node_modules/.bin/nodemon app.js dev",
+    "start": "node -r dotenv/config app.js dev dotenv_config_path=.env.dev",
+    "watch": "./node_modules/.bin/nodemon -r dotenv/config app.js dev dotenv_config_path=.env.dev",
     "webhookset": "node webhook.js set",
     "webhookdelete": "node webhook.js delete"
   }

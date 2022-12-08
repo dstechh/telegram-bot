@@ -8,6 +8,7 @@ const config = require("./config");
 
 (async (bot, handlers) => {
     require("moment-duration-format")(moment);
+    require("dotenv").config();
 
     bot.use(session());
     bot.use((ctx, next) => {
@@ -19,15 +20,7 @@ const config = require("./config");
         }
 
         Object.keys(customReply).forEach(key => {
-            ctx[key] = (message, options = {}) => ctx[customReply[key]](message, {...options, reply_to_message_id: messageId}).catch(e => ctx.telegram.sendMessage(
-                ctx.message.chat.id, //
-                message,
-                options
-                // {
-                //     ...options,
-                //     reply_to_message_id: messageId
-                // }
-            ));
+            ctx[key] = (message, options = {}) => ctx[customReply[key]](message, {...options, reply_to_message_id: messageId})
         });
 
         return next();
@@ -60,5 +53,5 @@ const config = require("./config");
         res.end(response);
     })).listen()
 })(
-    new Telegraf(config.token), fs.readdirSync(path.resolve("handlers"))
+    new Telegraf(process.env.TOKEN), fs.readdirSync(path.resolve("handlers"))
 );
