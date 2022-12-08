@@ -19,7 +19,14 @@ const config = require("./config");
         }
 
         Object.keys(customReply).forEach(key => {
-            ctx[key] = (message, options = {}) => ctx[customReply[key]](message, {...options, reply_to_message_id: messageId});
+            ctx[key] = (message, options = {}) => ctx[customReply[key]](message, {...options, reply_to_message_id: messageId}).catch(e => ctx.telegram.sendMessage(
+                ctx.message.chat.id,
+                message,
+                {
+                    ...options,
+                    reply_to_message_id: messageId
+                }
+            ));
         });
 
         return next();
